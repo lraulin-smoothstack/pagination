@@ -4,14 +4,23 @@ const BOOKS_PER_PAGE = 6;
 const numberOfPages = Math.ceil(data.length / BOOKS_PER_PAGE);
 const lastPageIndex = numberOfPages - 1;
 let currentPage = 0;
+let buttons = []; // associative array to get button by number
 
 const getTable = () => document.getElementsByTagName("table")[0];
-
-const getTableBody = () => document.getElementsByTagName("tbody")[0];
 
 const getBooksForPage = () => {
   const firstBookIndex = currentPage * BOOKS_PER_PAGE;
   return data.slice(firstBookIndex, firstBookIndex + BOOKS_PER_PAGE);
+};
+
+const activateButton = (buttonElement = new HTMLButtonElement()) => {
+  buttonElement.classList.add("active");
+  buttonElement.setAttribute("aria-pressed", "true");
+};
+
+const deactivateButton = (buttonElement = new HTMLButtonElement()) => {
+  buttonElement.classList.remove("active");
+  buttonElement.setAttribute("aria-pressed", "false");
 };
 
 const insertTableRow = (id, title, author) => {
@@ -45,6 +54,8 @@ const clearRows = () => {
 };
 
 const goToPage = pageIndex => {
+  deactivateButton(buttons[currentPage]);
+  activateButton(buttons[pageIndex]);
   currentPage = pageIndex;
   clearRows();
   insertAllRows();
@@ -76,9 +87,12 @@ const addPageButtons = () => {
   for (let index = 0; index <= lastPageIndex; index++) {
     const button = document.createElement("button");
     button.innerHTML = index;
+    button.className = "btn btn-primary";
     button.addEventListener("click", () => goToPage(index));
     span.appendChild(button);
+    buttons[index] = button; // add to hashmap for reference
   }
+  activateButton(buttons[0]);
 };
 
 document.addEventListener("DOMContentLoaded", () => {
