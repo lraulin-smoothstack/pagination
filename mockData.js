@@ -1,3 +1,5 @@
+"use strict";
+
 export default [
   { id: 1, title: "Girl, The", author: "Theodora Cramer" },
   { id: 2, title: "Panama Hattie", author: "Lauraine Clamo" },
