@@ -9,7 +9,7 @@ import data from "./mockData.js";
   let currentPage = 0;
   let buttons = []; // associative array to get button by number
 
-  const getTable = () => document.getElementsByTagName("table")[0];
+  const getTableElement = () => document.getElementsByTagName("table")[0];
 
   const getBooksForPage = () => {
     const firstBookIndex = currentPage * BOOKS_PER_PAGE;
@@ -26,8 +26,8 @@ import data from "./mockData.js";
     buttonElement.setAttribute("aria-pressed", "false");
   };
 
-  const insertTableRow = (id, title, author) => {
-    const table = getTable();
+  const insertTableRow = (id = 0, title = "", author = "") => {
+    const table = getTableElement();
 
     const row = table.insertRow();
 
@@ -46,7 +46,7 @@ import data from "./mockData.js";
   };
 
   const clearRows = () => {
-    const table = getTable();
+    const table = getTableElement();
     const HEADER_OFFSET = 1;
     const numberOfRows = () =>
       table.getElementsByTagName("tr").length - HEADER_OFFSET;
@@ -56,7 +56,7 @@ import data from "./mockData.js";
     }
   };
 
-  const goToPage = pageIndex => {
+  const goToPage = (pageIndex = 0) => {
     deactivateButton(buttons[currentPage]);
     activateButton(buttons[pageIndex]);
     currentPage = pageIndex;
