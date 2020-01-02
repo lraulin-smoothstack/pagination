@@ -13,23 +13,32 @@
     />
   </head>
   <body>
-    <h1>Books</h1>
+    <!-- HEADER -->
+    <header class="jumbotron">
+      <h1 class="display-4">Book Database</h1>
+      <p class="lead">A simple pagination example.</p>
+    </header>
 
-    <button type="button" id="btnPrevious" class="btn btn-secondary">&lt;</button>
+    <!-- PAGINATION CONTROLS -->
+    <button type="button" id="btnPrevious" class="btn btn-secondary">
+      &lt;
+    </button>
     <span id="pageButtons"></span>
     <button type="button" id="btnNext" class="btn btn-secondary">&gt;</button>
 
-    <table >
-      <thead>
+    <!-- TABLE -->
+    <table class="table">
+      <thead class="thead-dark">
         <tr>
-          <th>Id</th>
-          <th>Title</th>
-          <th>Author</th>
+          <th scope="col">Id</th>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
         </tr>
       </thead>
       <tbody></tbody>
     </table>
 
+    <!-- JAVASCRIPT -->
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -47,4 +56,5 @@
     ></script>
     <script src="mockData.js" type="module"></script>
     <script src="main.js" type="module"></script>
+  </body>
 </html>

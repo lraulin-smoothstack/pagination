@@ -79,7 +79,7 @@ const nextPage = () => changePage(1);
 
 const previousPage = () => changePage(-1);
 
-const onclick = (id = "", callback = () => undefined) =>
+const addClickListener = (id = "", callback = () => undefined) =>
   document.getElementById(id).addEventListener("click", callback);
 
 const addPageButtons = () => {
@@ -97,7 +97,7 @@ const addPageButtons = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   addPageButtons();
-  onclick("btnNext", nextPage);
-  onclick("btnPrevious", previousPage);
+  addClickListener("btnNext", nextPage);
+  addClickListener("btnPrevious", previousPage);
   insertAllRows();
 });
